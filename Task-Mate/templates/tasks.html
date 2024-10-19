@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My to-do list</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tasks.css') }}">
+
+
+
+</head>
+<body>
+
+
+
+<div class="todo-container">
+    <!-- Left Section for Adding Tasks -->
+    <div class="left-half">
+        <h1>Add New Task</h1>
+
+        <!-- Task Creation Form -->
+        <form id="new-task-form">
+            <label for="task-name">Task Name</label>
+            <input type="text" id="task-name" placeholder="Enter task name" required>
+
+            <label for="task-category">Category</label>
+            <input type="text" id="task-category" placeholder="e.g., Work, Personal" required>
+
+            <label for="task-date">Due Date</label>
+            <input type="date" id="task-date" required>
+
+            <label for="task-priority">Priority</label>
+            <select id="task-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+
+            <label for="task-notes">Notes</label>
+            <textarea id="task-notes" placeholder="Additional details (optional)"></textarea>
+
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+
+    <!-- Right Section for Managing Tasks -->
+    <div class="right-half">
+        <h1>Task manager</h1>
+
+        <!-- Task Filters -->
+        <div class="filters">
+            <select id="category-filter">
+                <option value="all">All Categories</option>
+            </select>
+
+            <select id="status-filter">
+                <option value="all">All Statuses</option>
+                <option value="complete">Completed</option>
+                <option value="incomplete">Incomplete</option>
+            </select>
+        </div>
+
+        <!-- Task Sorting -->
+        <div class="sort-options">
+            <select id="sort-by">
+                <option value="date">Sort by Due Date</option>
+                <option value="priority">Sort by Priority</option>
+                <option value="category">Sort by Category</option>
+            </select>
+        </div>
+
+        <!-- Task Search -->
+        <div class="search-container">
+            <input type="search" id="task-search" placeholder="Search tasks...">
+        </div>
+
+        <!-- Task List -->
+        <ul id="task-list"></ul>
+
+        <!-- Progress Display -->
+        <div class="progress-container">
+            <span id="progress-text">0 of 0 tasks completed</span>
+            <progress id="task-progress" value="0" max="100"></progress>
+        </div>
+    </div>
+    <a href="/logout" class="logout-link">Logout</a>
+
+</div>
+
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
